@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8ED3538D224AF23000C833E1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3538C224AF23000C833E1 /* main.swift */; };
 		8ED35398224AFA2B00C833E1 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED35397224AFA2B00C833E1 /* VM.swift */; };
-		8ED3539A224AFA8200C833E1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED35399224AFA8200C833E1 /* Error.swift */; };
 		8ED3539C224B01BD00C833E1 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3539B224B01BD00C833E1 /* Memory.swift */; };
 		8ED3539E224D12EC00C833E1 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3539D224D12EC00C833E1 /* Instruction.swift */; };
 		8ED353A1224D1C3A00C833E1 /* movmr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED353A0224D1C3A00C833E1 /* movmr.swift */; };
@@ -41,7 +40,6 @@
 		8ED35389224AF23000C833E1 /* Simple Assembly Program */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Simple Assembly Program"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED3538C224AF23000C833E1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8ED35397224AFA2B00C833E1 /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
-		8ED35399224AFA8200C833E1 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		8ED3539B224B01BD00C833E1 /* Memory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		8ED3539D224D12EC00C833E1 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		8ED353A0224D1C3A00C833E1 /* movmr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movmr.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				8ED3538C224AF23000C833E1 /* main.swift */,
-				8ED35399224AFA8200C833E1 /* Error.swift */,
 				8ED35397224AFA2B00C833E1 /* VM.swift */,
 				8ED3539D224D12EC00C833E1 /* Instruction.swift */,
 				8ED3539B224B01BD00C833E1 /* Memory.swift */,
@@ -185,7 +182,6 @@
 				8ED353AC224D71A000C833E1 /* printi.swift in Sources */,
 				8ED353A4224D6E5B00C833E1 /* outs.swift in Sources */,
 				8ED353B622500AB500C833E1 /* movrr.swift in Sources */,
-				8ED3539A224AFA8200C833E1 /* Error.swift in Sources */,
 				8ED3538D224AF23000C833E1 /* main.swift in Sources */,
 				8ED353A1224D1C3A00C833E1 /* movmr.swift in Sources */,
 			);
