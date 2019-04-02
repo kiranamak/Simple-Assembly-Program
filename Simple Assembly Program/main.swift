@@ -19,10 +19,6 @@ func readTextFile(_ path: String) -> (message: String?, fileText: String?) {
 }
 
 
-func splitStringIntoParts(_ expression: String) -> [Int] {
-    return expression.split{$0 == " " || $0 == "\n" }.map{ Int($0)! }
-}
-
 let path = "/Users/kmak/Desktop/doubles.txt"
 let binary = splitStringIntoParts(readTextFile(path).1!)
 var m = Memory(binary: binary)
@@ -40,4 +36,3 @@ let commands = [halt(m),
 ]
 let a = VM(commands: commands, memory: m)
 a.run()
-

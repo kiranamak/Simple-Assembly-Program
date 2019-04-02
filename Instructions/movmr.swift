@@ -14,7 +14,12 @@ class movmr: Instruction {
         super.init(memory, 2, 8, name: "movmr")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.label, .register]
+    }
+    
     override func run(_ args: [Int]) {
+        super.run(args)
         let label = memory[args[0]]
         let r = Register(rawValue: args[1])
         

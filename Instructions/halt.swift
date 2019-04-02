@@ -15,6 +15,7 @@ class halt: Instruction {
     }
     
     override func run(_ args: [Int]) {
+        super.run(args)
         VM.setHalt(true)
     }
 }

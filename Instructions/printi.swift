@@ -14,7 +14,12 @@ class printi: Instruction {
         super.init(memory, 1, 49, name: "printi")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.int, nil]
+    }
+    
     override func run(_ args: [Int]){
+        super.run(args)
         let r = Register(rawValue: args[0])
         print(memory[r!], terminator: "")
     }

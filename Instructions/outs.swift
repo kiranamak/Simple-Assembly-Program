@@ -14,7 +14,12 @@ class outs: Instruction {
         super.init(memory, 1, 55, name: "outs")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.label]
+    }
+    
     override func run(_ args: [Int]){
+        super.run(args)
         let label = args[0]
         var str = ""
         for i in 1...memory[label] {

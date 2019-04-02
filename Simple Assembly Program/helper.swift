@@ -11,3 +11,8 @@ import Foundation
 func unicodeValueToCharacter(_ n: Int) -> Character {
     return Character(UnicodeScalar(n)!)
 }
+
+func splitStringIntoParts(_ expression: String) -> [Int] {
+    return expression.split{$0 == " " || $0 == "\n"  || $0 == "\t" }.map{ Int($0)! }
+    
+}

@@ -12,7 +12,9 @@ import Foundation
 class VM {
     var commands: [Instruction]
     static var halt = false
-    static var pointer = 0
+    var pointer: Int {
+        return memory[Register.rPC]
+    }
     var memory: Memory
     
     init(commands: [Instruction], memory: Memory) {
@@ -20,7 +22,6 @@ class VM {
         for c in commands {
             self.commands[c.code] = c
         }
-        VM.pointer = binary[1]
         self.memory = memory
     }
     
@@ -28,21 +29,15 @@ class VM {
         VM.halt = halt
     }
     
-    static func setPointer(_ pointer: Int) {
-        VM.pointer = pointer
-    }
-    
     func run(){
-        let startPointer = binary[1]
-        VM.pointer = startPointer
         
         while !VM.halt {
-            let command = commands[memory[VM.pointer]]
-            VM.pointer += 1
+            let command = commands[memory[pointer]]
+            memory[.rPC] += 1
             var args = ""
             for _ in 0..<command.argCount {
-                args += String(memory[VM.pointer]) + " "
-                VM.pointer += 1
+                args += String(memory[pointer]) + " "
+                memory[.rPC] += 1
             }
             command.run(args)
         }

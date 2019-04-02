@@ -14,8 +14,12 @@ class addir: Instruction {
         super.init(memory, 2, 12, name: "addir")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.int, .register]
+    }
+    
     override func run(_ args: [Int]) {
-        
+        super.run(args)
         let int = args[0]
         let r = Register(rawValue: args[1])
         memory[r!] += int

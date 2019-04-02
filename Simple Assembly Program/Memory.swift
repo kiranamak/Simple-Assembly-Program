@@ -11,13 +11,15 @@
 import Foundation
 
 enum Register: Int {
-    case zero = 0, one, two, three, four, five, six, seven, eight, nine
-    case compare = 10
+    case r0 = 0, r1, r2, r3, r4, r5, r6, r7, r8, r9
+    case rCP = 10
+    case rPC = 11
+    case rST = 12
 }
 
 class Memory {
-    var memory: [Int]
-    var registers = [Int](repeating: 0, count: 11)
+    var memory = [Int](repeating: 0, count: 10000)
+    var registers = [Int](repeating: 0, count: 13)
     var program = [Int]()
     
     init(binary: [Int]) {
@@ -25,6 +27,7 @@ class Memory {
         for i in 2..<(binary[0] + 2) {
             program.append(binary[i])
         }
+        registers[Register.rPC.rawValue] = getProgramStart()
     }
     
     func getMemory() -> [Int] {
@@ -40,9 +43,12 @@ class Memory {
         set(v) { program[i] = v }
     }
     
-    subscript(_ i: Int, binary: Bool) -> Int {
-        get { return memory[i] }
-        set(v) { memory[i] = v }
+    func getProgramLength() -> Int {
+        return memory[0]
+    }
+    
+    func getProgramStart() -> Int {
+        return memory[1]
     }
     
     subscript(_ r: Register) -> Int {

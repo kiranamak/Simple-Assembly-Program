@@ -14,9 +14,14 @@ class cmprr: Instruction {
         super.init(memory, 2, 34, name: "cmprr")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.register, .register]
+    }
+    
     override func run(_ args: [Int]) {
+        super.run(args)
         let r1 = Register(rawValue: args[0])
         let r2 = Register(rawValue: args[1])
-        memory[Register.compare] = (memory[r2!] - memory[r1!])
+        memory[Register.rCP] = (memory[r1!] - memory[r2!])
     }
 }

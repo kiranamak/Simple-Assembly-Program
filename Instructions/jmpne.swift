@@ -14,10 +14,15 @@ class jmpne: Instruction {
         super.init(memory, 1, 57, name: "jmpne")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.label, nil]
+    }
+    
     override func run(_ args: [Int]){
+        super.run(args)
         let label = args[0]
-        if memory[Register.compare] != 0 {
-            VM.setPointer(label)
+        if memory[Register.rCP] != 0 {
+            memory[.rPC] = label
         }
     }
 }

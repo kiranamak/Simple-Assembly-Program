@@ -14,7 +14,12 @@ class outcr: Instruction {
         super.init(memory, 1, 45, name: "outcr")
     }
     
+    override var parameterTypes: [Parameters?] {
+        return [.register, nil]
+    }
+    
     override func run(_ args: [Int]) {
+        super.run(args)
         let charVal = memory[Register(rawValue: args[0])!]
         print(unicodeValueToCharacter(charVal), terminator: "")    }
 }
