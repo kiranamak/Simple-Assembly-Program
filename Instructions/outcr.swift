@@ -15,11 +15,11 @@ class outcr: Instruction {
     }
     
     override var parameterTypes: [Parameters?] {
-        return [.register, nil]
+        return [.register]
     }
     
     override func run(_ args: [Int]) {
         super.run(args)
-        let charVal = memory[Register(rawValue: args[0])!]
+        let charVal = memory[r1!]
         print(unicodeValueToCharacter(charVal), terminator: "")    }
 }

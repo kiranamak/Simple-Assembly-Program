@@ -15,13 +15,12 @@ class printi: Instruction {
     }
     
     override var parameterTypes: [Parameters?] {
-        return [.int, nil]
+        return [.register]
     }
     
     override func run(_ args: [Int]){
         super.run(args)
-        let r = Register(rawValue: args[0])
-        print(memory[r!], terminator: "")
+        print(memory[r1!], terminator: "")
     }
 }
 

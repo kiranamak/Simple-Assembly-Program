@@ -20,7 +20,6 @@ class outs: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let label = args[0]
         var str = ""
         for i in 1...memory[label] {
             let charVal = memory[label + i]

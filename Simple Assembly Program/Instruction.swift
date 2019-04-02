@@ -23,6 +23,12 @@ class Instruction: CustomStringConvertible {
     let memory: Memory
     let name: String
     
+    var r1: Register? = nil
+    var r2: Register? = nil
+    var r3: Register? = nil
+    var label = 0
+    var int = 0
+    
     init (_ memory: Memory, _ argCount: Int, _ code: Int, name: String = "abstract") {
         self.memory = memory
         self.argCount = argCount
@@ -31,7 +37,7 @@ class Instruction: CustomStringConvertible {
     }
     
     var parameterTypes: [Parameters?] {
-        return [nil, nil]
+        return [nil, nil, nil]
     }
     
     func run(_ args: String) {
@@ -51,35 +57,70 @@ class Instruction: CustomStringConvertible {
         }
     }
     
-    private func checkParams(_ params: [Int]) {
-        for i in 0..<argCount {
-            if parameterTypes[i] == .label {
-                do {
-                    try validLabel(params[i])
-                } catch ( InvalidParameterError.labelOutOfBounds(let label) ) {
-                    print("Invalid label \(label) is out of bounds of memory (0 - \(memory.getMemory().count - 1)")
-                    fatalError("Invalid label")
-                } catch {
-                    print("Unexpected Error: \(error)")
-                    fatalError("Unexpected label error")
-                }
-            }
-            if parameterTypes[i] == .register {
-                do {
-                    try validRegister(params[i])
-                } catch ( InvalidParameterError.registerOutOfBounds(let reg) ) {
-                    print("Invalid register \(reg), must be 0 - 9")
-                    fatalError("Invalid register")
-                } catch {
-                    print("Unexpected Error: \(error)")
-                    fatalError("Unexpected register error")
-                }
-            }
+    private func createLabel(_ label: Int) {
+        do {
+            try validLabel(label)
+            self.label = label
+        } catch ( InvalidParameterError.labelOutOfBounds(let l) ) {
+            print("Invalid label \(l) is out of bounds of memory (0 - \(memory.getMemory().count - 1)")
+            fatalError("Invalid label")
+        } catch {
+            print("Unexpected Error: \(error)")
+            fatalError("Unexpected label error")
         }
     }
     
+    private func setRegister(_ reg: Int) {
+        let rVal = Register(rawValue: reg)
+        if r1 == nil {
+            r1 = rVal
+            return
+        } else if r2 == nil {
+            r2 = rVal
+            return
+        } else {
+            r3 = rVal
+            return
+        }
+    }
+    
+    private func createRegister(_ reg: Int) {
+        do {
+            try validRegister(reg)
+            setRegister(reg)
+        } catch ( InvalidParameterError.registerOutOfBounds(let r) ) {
+            print("Invalid register \(r), must be 0 - 9")
+            fatalError("Invalid register")
+        } catch {
+            print("Unexpected Error: \(error)")
+            fatalError("Unexpected register error")
+        }
+    }
+    
+    private func createInt(_ int: Int) {
+        self.int = int
+    }
+    
+    private func checkParams(_ param: Int, _ i: Int) {
+        switch parameterTypes[i]! {
+        case .label: createLabel(param)
+        case .register: createRegister(param)
+        case .int: createInt(param)
+        }
+    }
+    
+    private func reset() {
+        r1 = nil
+        r2 = nil
+        r3 = nil
+    }
+    
     func run(_ args: [Int]) {
-        checkParams(args)
+        reset()
+        for i in 0..<argCount {
+            checkParams(args[i], i)
+        }
+        
         if name == "abstract" {
             fatalError("Instructions is an Abstract Class")
         }

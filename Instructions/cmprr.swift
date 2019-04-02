@@ -20,8 +20,6 @@ class cmprr: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
-        let r1 = Register(rawValue: args[0])
-        let r2 = Register(rawValue: args[1])
         memory[Register.rCP] = (memory[r1!] - memory[r2!])
     }
 }

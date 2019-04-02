@@ -20,7 +20,6 @@ class jmpne: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let label = args[0]
         if memory[Register.rCP] != 0 {
             memory[.rPC] = label
         }

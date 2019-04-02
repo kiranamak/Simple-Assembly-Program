@@ -20,9 +20,7 @@ class addir: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
-        let int = args[0]
-        let r = Register(rawValue: args[1])
-        memory[r!] += int
+        memory[r1!] += int
 
     }
 }
