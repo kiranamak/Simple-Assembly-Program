@@ -34,5 +34,6 @@ let commands = [halt(m),
                 outs(m),
                 jmpne(m)
 ]
+
 let a = VM(commands: commands, memory: m)
 a.run()

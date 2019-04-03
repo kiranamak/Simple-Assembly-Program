@@ -1,70 +1,36 @@
 //
-//  clr.swift
+//  mul.swift
 //  Simple Assembly Program
 //
-//  Created by Kiran Mak on 4/1/19.
+//  Created by Kiran Mak on 4/2/19.
 //  Copyright © 2019 Kiran Mak. All rights reserved.
 //
 
 import Foundation
 
-//Instructions: 1 - 4
+//Instructions: 20-23
 
-class clrr: Instruction {
+class mulir: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 1, 1)
+        super.init(memory, 2, 20)
     }
     
     override var parameterTypes: [Parameters?] {
-        return [.register]
+        return [.int, .register]
     }
     
     override func run(_ args: [Int]) {
         super.run(args)
+        memory[r1!] *= int
         
-        memory[r1!] = 0
     }
 }
 
-class clrx: Instruction {
+class mulrr: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 1, 2)
-    }
-    
-    override var parameterTypes: [Parameters?] {
-        return [.register]
-    }
-    
-    override func run(_ args: [Int]) {
-        super.run(args)
-        
-        memory[memory[r1!]] = 0
-    }
-}
-
-class clrm: Instruction {
-    
-    init(_ memory: Memory) {
-        super.init(memory, 1, 3)
-    }
-    
-    override var parameterTypes: [Parameters?] {
-        return [.label]
-    }
-    
-    override func run(_ args: [Int]) {
-        super.run(args)
-        
-        memory[label] = 0
-    }
-}
-
-class clrb: Instruction {
-    
-    init(_ memory: Memory) {
-        super.init(memory, 2, 4)
+        super.init(memory, 2, 21)
     }
     
     override var parameterTypes: [Parameters?] {
@@ -73,12 +39,38 @@ class clrb: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
-        let start = memory[r1!]
-        let count = memory[r2!]
-        
-        for i in start..<(start + count) {
-            memory[i] = 0
-        }  
+        memory[r2!] *= memory[r1!]
     }
 }
 
+class mulmr: Instruction {
+    
+    init(_ memory: Memory) {
+        super.init(memory, 2, 22)
+    }
+    
+    override var parameterTypes: [Parameters?] {
+        return [.label, .register]
+    }
+    
+    override func run(_ args: [Int]) {
+        super.run(args)
+        memory[r1!] *= memory[label]
+    }
+}
+
+class mulxr: Instruction {
+    
+    init(_ memory: Memory) {
+        super.init(memory, 2, 23)
+    }
+    
+    override var parameterTypes: [Parameters?] {
+        return [.register, .register]
+    }
+    
+    override func run(_ args: [Int]) {
+        super.run(args)
+        memory[r2!] *= memory[memory[r1!]]
+    }
+}

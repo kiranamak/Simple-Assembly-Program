@@ -8,10 +8,12 @@
 
 import Foundation
 
+//Instructions: 49
+
 class printi: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 1, 49, name: "printi")
+        super.init(memory, 1, 49)
     }
     
     override var parameterTypes: [Parameters?] {

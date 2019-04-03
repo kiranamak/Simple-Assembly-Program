@@ -8,10 +8,12 @@
 
 import Foundation
 
+//Instructions: 0
+
 class halt: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 0, 0, name: "halt")
+        super.init(memory, 0, 0)
     }
     
     override func run(_ args: [Int]) {

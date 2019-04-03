@@ -29,11 +29,14 @@ class Instruction: CustomStringConvertible {
     var label = 0
     var int = 0
     
-    init (_ memory: Memory, _ argCount: Int, _ code: Int, name: String = "abstract") {
+    init (_ memory: Memory, _ argCount: Int, _ code: Int) {
         self.memory = memory
         self.argCount = argCount
         self.code = code
-        self.name = name
+        
+        let thisType = type(of: self)
+        if thisType == Instruction.self { self.name = "Abstract" }
+        else { self.name = String(describing: thisType) }
     }
     
     var parameterTypes: [Parameters?] {
