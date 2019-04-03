@@ -22,9 +22,8 @@ class sojz: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let subirInstruction = subir(memory)
-        subirInstruction.run([1, r1!.rawValue])
-        if memory[Register.rCP] == 0 {
+        memory[r1!] -= 1
+        if memory[r1!] == 0 {
             memory[.rPC] = label
         }
     }
@@ -42,9 +41,8 @@ class sojnz: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let subirInstruction = subir(memory)
-        subirInstruction.run([1, r1!.rawValue])
-        if memory[Register.rCP] != 0 {
+        memory[r1!] -= 1
+        if memory[r1!] != 0 {
             memory[.rPC] = label
         }
     }
@@ -62,9 +60,8 @@ class aojz: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let addirInstruction = addir(memory)
-        addirInstruction.run([1, r1!.rawValue])
-        if memory[Register.rCP] == 0 {
+        memory[r1!] += 1
+        if memory[r1!] == 0 {
             memory[.rPC] = label
         }
     }
@@ -82,9 +79,8 @@ class aojnz: Instruction {
     
     override func run(_ args: [Int]){
         super.run(args)
-        let addirInstruction = addir(memory)
-        addirInstruction.run([1, r1!.rawValue])
-        if memory[Register.rCP] != 0 {
+        memory[r1!] += 1
+        if memory[r1!] != 0 {
             memory[.rPC] = label
         }
     }

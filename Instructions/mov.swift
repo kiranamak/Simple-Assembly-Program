@@ -109,3 +109,52 @@ class movar: Instruction {
     }
 }
 
+class movb: Instruction {
+    init(_ memory: Memory) {
+        super.init(memory, 2, 11)
+    }
+    
+    override var parameterTypes: [Parameters?] {
+        return [.register, .register]
+    }
+    
+    override func run(_ args: [Int]) {
+        super.run(args)
+        for i in 0..<memory[r3!] {
+            memory[memory[r2!] + i] = memory[memory[r1!] + i]
+        }
+    }
+}
+
+class movrx: Instruction {
+    init(_ memory: Memory) {
+        super.init(memory, 2, 53)
+    }
+    
+    override var parameterTypes: [Parameters?] {
+        return [.register, .register]
+    }
+    
+    override func run(_ args: [Int]) {
+        super.run(args)
+        memory[memory[r2!]] = memory[r1!]
+    }
+}
+
+
+class movxx: Instruction {
+    init(_ memory: Memory) {
+        super.init(memory, 2, 54)
+    }
+    
+    override var parameterTypes: [Parameters?] {
+        return [.register, .register]
+    }
+    
+    override func run(_ args: [Int]) {
+        super.run(args)
+        memory[memory[r2!]] = memory[memory[r1!]]
+    }
+}
+
+

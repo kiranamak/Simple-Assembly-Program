@@ -29,9 +29,19 @@ class VM {
         VM.halt = halt
     }
     
+    private func validCommand(_ code: Int) -> Bool {
+        if code < 0 || code > commands.count {
+            return false
+        }
+        return true
+    }
+    
     func run(){
         
         while !VM.halt {
+            if !validCommand(memory[pointer]) {
+                print("Invalid command code \(memory[pointer]) at location \(pointer)")
+            }
             let command = commands[memory[pointer]]
             memory[.rPC] += 1
             var args = ""

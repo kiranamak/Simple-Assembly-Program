@@ -12,11 +12,6 @@ enum Parameters {
     case int, register, label
 }
 
-enum InvalidParameterError: Error {
-    case labelOutOfBounds(label: Int)
-    case registerOutOfBounds(reg: Int)
-}
-
 class Instruction: CustomStringConvertible {
     let argCount: Int
     let code: Int
@@ -48,29 +43,26 @@ class Instruction: CustomStringConvertible {
         run(argsArray)
     }
     
-    private func validLabel(_ label: Int) throws {
+    private func validLabel(_ label: Int) -> Bool {
         if label < 0 || label >= memory.getMemory().count  {
-            throw InvalidParameterError.labelOutOfBounds(label: label)
+            return false
         }
+        return true
     }
     
-    private func validRegister(_ reg: Int) throws {
+    private func validRegister(_ reg: Int) -> Bool {
         if reg < 0 || reg > 9 {
-            throw InvalidParameterError.registerOutOfBounds(reg: reg)
+            return false
         }
+        return true
     }
     
     private func createLabel(_ label: Int) {
-        do {
-            try validLabel(label)
-            self.label = label
-        } catch ( InvalidParameterError.labelOutOfBounds(let l) ) {
-            print("Invalid label \(l) is out of bounds of memory (0 - \(memory.getMemory().count - 1)")
+        if !validLabel(label) {
+            print("Invalid label \(label) is out of bounds of memory (0 - \(memory.getMemory().count - 1)")
             fatalError("Invalid label")
-        } catch {
-            print("Unexpected Error: \(error)")
-            fatalError("Unexpected label error")
         }
+        self.label = label
     }
     
     private func setRegister(_ reg: Int) {
@@ -88,16 +80,11 @@ class Instruction: CustomStringConvertible {
     }
     
     private func createRegister(_ reg: Int) {
-        do {
-            try validRegister(reg)
-            setRegister(reg)
-        } catch ( InvalidParameterError.registerOutOfBounds(let r) ) {
-            print("Invalid register \(r), must be 0 - 9")
+        if !validRegister(reg) {
+            print("Invalid register \(reg), must be 0 - 9")
             fatalError("Invalid register")
-        } catch {
-            print("Unexpected Error: \(error)")
-            fatalError("Unexpected register error")
         }
+        setRegister(reg)
     }
     
     private func createInt(_ int: Int) {
@@ -126,6 +113,13 @@ class Instruction: CustomStringConvertible {
         
         if name == "abstract" {
             fatalError("Instructions is an Abstract Class")
+        }
+    }
+    
+    func checkDivisionByZero(_ i: Int) {
+        if i == 0 {
+            print("Attempted division by zero")
+            fatalError("Division by zero")
         }
     }
     

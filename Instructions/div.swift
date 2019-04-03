@@ -22,6 +22,7 @@ class divir: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
+        checkDivisionByZero(int)
         memory[r1!] /= int
         
     }
@@ -39,6 +40,7 @@ class divrr: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
+        checkDivisionByZero(memory[r1!])
         memory[r2!] /= memory[r1!]
     }
 }
@@ -55,6 +57,7 @@ class divmr: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
+        checkDivisionByZero(memory[label])
         memory[r1!] /= memory[label]
     }
 }
@@ -71,6 +74,7 @@ class divxr: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
+        checkDivisionByZero(memory[memory[r1!]])
         memory[r2!] /= memory[memory[r1!]]
     }
 }

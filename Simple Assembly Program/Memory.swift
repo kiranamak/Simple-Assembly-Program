@@ -21,6 +21,7 @@ class Memory {
     var memory = [Int](repeating: 0, count: 10000)
     var registers = [Int](repeating: 0, count: 13)
     var program = [Int]()
+    var stack = Stack(size: 200, initial: 0)
     
     init(binary: [Int]) {
         self.memory = binary
