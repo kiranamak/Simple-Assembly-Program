@@ -9,6 +9,7 @@
 import Foundation
 
 //Instructions: 39-40
+//TODO: check stack condition
 
 class jsr: Instruction {
     
@@ -17,17 +18,15 @@ class jsr: Instruction {
     }
     
     override var parameterTypes: [Parameters?] {
-        return [.register]
+        return [.label]
     }
     
     override func run(_ args: [Int]){
         super.run(args)
         for i in 5...9 {
-            let push1 = push(memory)
-            push1.run([Register(rawValue: i)!.rawValue])
+            memory.stack.push(memory[Register(rawValue: i)!])
         }
-        let push2 = push(memory)
-        push2.run([Register.rPC.rawValue])
+        memory.stack.push(memory[.rPC])
 
         memory[.rPC] = label
     }
@@ -43,13 +42,11 @@ class ret: Instruction {
         return [nil]
     }
     
-    override func run(_ args: [Int]){
+    override func run(_ args: [Int]) {
         super.run(args)
-        let pop1 = pop(memory)
-        pop1.run([Register.rPC.rawValue])
-        for i in 5...9 {
-            let pop2 = pop(memory)
-            pop2.run([Register(rawValue: i)!.rawValue])
+        memory[.rPC] = memory.stack.pop()!
+        for i in stride(from: 9, through: 5, by: -1) {
+            memory[Register(rawValue: i)!] = memory.stack.pop()!
         }
     }
 }

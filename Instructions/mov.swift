@@ -1,5 +1,5 @@
 //
-//  movrr.swift
+//  mov.swift
 //  Simple Assembly Program
 //
 //  Created by Kiran Mak on 3/30/19.
@@ -80,7 +80,7 @@ class movmr: Instruction {
 class movxr: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 2, 8)
+        super.init(memory, 2, 9)
     }
     
     override var parameterTypes: [Parameters?] {
@@ -89,14 +89,14 @@ class movxr: Instruction {
     
     override func run(_ args: [Int]) {
         super.run(args)
-        memory[r2!] = memory[r1!]
+        memory[r2!] = memory[memory[r1!]]
     }
 }
 
 class movar: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 2, 8)
+        super.init(memory, 2, 10)
     }
     
     override var parameterTypes: [Parameters?] {

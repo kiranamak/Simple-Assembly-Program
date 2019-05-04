@@ -1,5 +1,5 @@
 //
-//  soj.swift
+//  soj-aoj.swift
 //  Simple Assembly Program
 //
 //  Created by Kiran Mak on 4/2/19.

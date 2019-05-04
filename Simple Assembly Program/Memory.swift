@@ -23,6 +23,7 @@ class Memory {
     var program = [Int]()
     var stack = Stack(size: 200, initial: 0)
     
+    
     init(binary: [Int]) {
         self.memory = binary
         for i in 2..<(binary[0] + 2) {

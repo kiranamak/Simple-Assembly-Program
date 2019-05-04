@@ -39,7 +39,7 @@ class Instruction: CustomStringConvertible {
     }
     
     func run(_ args: String) {
-        let argsArray = splitStringIntoParts(args)
+        let argsArray = splitStringIntoInts(args)
         run(argsArray)
     }
     

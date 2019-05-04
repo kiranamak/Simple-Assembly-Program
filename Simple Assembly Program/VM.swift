@@ -37,7 +37,6 @@ class VM {
     }
     
     func run(){
-        
         while !VM.halt {
             if !validCommand(memory[pointer]) {
                 print("Invalid command code \(memory[pointer]) at location \(pointer)")

@@ -1,5 +1,5 @@
 //
-//  jmpne.swift
+//  jmp.swift
 //  Simple Assembly Program
 //
 //  Created by Kiran Mak on 3/28/19.

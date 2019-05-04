@@ -1,5 +1,5 @@
 //
-//  outcr.swift
+//  out.swift
 //  Simple Assembly Program
 //
 //  Created by Kiran Mak on 3/28/19.
@@ -63,7 +63,7 @@ class outcx: Instruction {
 class outcb: Instruction {
     
     init(_ memory: Memory) {
-        super.init(memory, 1, 47)
+        super.init(memory, 2, 47)
     }
     
     override var parameterTypes: [Parameters?] {

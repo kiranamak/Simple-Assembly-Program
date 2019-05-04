@@ -1,5 +1,5 @@
 //
-//  printi.swift
+//  print.swift
 //  Simple Assembly Program
 //
 //  Created by Kiran Mak on 3/28/19.
