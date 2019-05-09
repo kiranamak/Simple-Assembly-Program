@@ -19,8 +19,9 @@ func readTextFile(_ path: String) -> (message: String?, fileText: String?) {
 }
 
 
-let path = "/Users/kmak/Desktop/TuringEBin.txt"
-let path2 = "/Users/kmak/Desktop/Dbls.txt"
+let path = "/Users/me/Desktop/turing.txt"
+let path2 = "/Users/me/Desktop/turingText.txt"
+
 let fileContents = readTextFile(path2).1!
 let binary = splitStringIntoInts(readTextFile(path).1!)
 var m = Memory(binary: binary)
@@ -82,9 +83,39 @@ let commands = [halt(m),
 print("hello world")
 let a = VM(commands: commands, memory: m)
 a.run()
+
 let b = Tokenizer(fileText: fileContents, commands: commands)
 b.createChunks()
 b.createTokens()
+print(b.matchTokens())
+
+let c = Assembler(text: fileContents)
+c.tokenize()
+
+c.assemble()
+print(c.bin)
+
+let bin = readTextFile(path).1!
+
+let splitBin = splitStringIntoParts(bin)
+let h = splitStringIntoParts(c.bin)
+
+print(c.handleString(line: "Welcome to Turing!"))
+print(c.handleString(line: "_010101_"))
+print(c.errors)
+print(c.symbolTable)
+for i in 0..<splitBin.count{
+    let yes = splitBin[i] == h[i] ? "" : "<------"
+    print(splitBin[i] + " " + h[i] + yes)
+}
+
+print(h.count)
+
+print(c.start)
+
+/*
+
+
 for i in 0..<b.lines.count {
     print("\(b.lines[i]) \(b.chunks[i])", terminator: " ")
     for t in b.tokens[i] {
@@ -92,3 +123,6 @@ for i in 0..<b.lines.count {
     }
     print("\n")
 }
+ */
+
+

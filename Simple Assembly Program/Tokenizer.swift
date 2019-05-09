@@ -61,7 +61,7 @@ class Tokenizer {
             else if chars[i] == "\\" {
                 chunk += "\\"
                 i += 1
-                while chars[i] != "\"" && chars[i] != "\n" {
+                while chars[i] != "\\" && chars[i] != "\n" {
                     chunk += String(chars[i])
                     i += 1
                 }
@@ -161,18 +161,98 @@ class Tokenizer {
             }
         }
     }
+    func matchTokens()->[[Token]]{
+        var matchedTokens = [[Token]]()
+        for line in 0..<chunks.count{
+            matchedTokens.append([Token]())
+            
+            for i in 0..<chunks[line].count{
+                let tokenType = tokens[line][i]
+                
+                if tokenType == .ImmediateTuple{
+                    matchedTokens[line].append(Token(type: .ImmediateTuple, intValue: nil, stringValue: nil, tupleValue: parseTuple(tuple: chunks[line][i])))
+                }
+                else if tokenType == .ImmediateInteger{
+                    var intValue = chunks[line][i]
+                    intValue.removeFirst()
+                    matchedTokens[line].append(Token(type: .ImmediateInteger, intValue: Int(intValue), stringValue: nil, tupleValue: nil))
+                }
+                else{
+                    matchedTokens[line].append(Token(type: tokenType, intValue: nil, stringValue: chunks[line][i], tupleValue: nil))
+                }
+            }
+        }
+        return matchedTokens
+        
+    }
+    
+    func parseTuple(tuple: String)->Tuple?{
+        let chars = Array(tuple)
+        var parts = splitStringIntoParts(tuple)
+        if !(parts.count == 5){ return nil}
+        if (chars[0] == "\\" && chars.last == "\\"){
+            parts[0].removeFirst()
+            parts[4].removeLast()
+        }else{ return nil}
+        if Int(parts[0]) == nil  || Int(parts[2]) == nil{ return nil}
+        if !Set(["r", "l"]).contains(parts[4]){ return nil}
+        
+        return Tuple(cs: Int(parts[0])!, ic: Character(parts[1]), ns: Int(parts[2])!, oc: Character(parts[3]), d: Character(parts[4]))
+        
+    }
 
 }
 
+struct Token: CustomStringConvertible{
+    let type:  TokenType
+    let intValue: Int?
+    let stringValue: String?
+    let tupleValue: Tuple?
+    
+    init(type: TokenType, intValue: Int?, stringValue: String?, tupleValue: Tuple?){
+        self.type = type
+        self.intValue = intValue
+        self.stringValue = stringValue
+        self.tupleValue = tupleValue
+    }
+    var description: String{
+        var data = ""
+        if let i = intValue{ data += String(i)}
+        if let s = stringValue{ data += s}
+        if let t = tupleValue{data += t.description}
+        return type.rawValue + " data: " + data
+    }
+    
+}
+
+struct Tuple: CustomStringConvertible{
+    let currentState: Int
+    let inputCharacter : Character
+    let newState: Int
+    let outputCharacter: Character
+    let direction: Character
+    init(cs: Int, ic: Character, ns: Int, oc: Character, d: Character){
+        currentState = cs
+        inputCharacter = ic
+        newState = ns
+        outputCharacter = oc
+        direction = d
+    }
+    var description: String{
+        return "\(currentState) \(inputCharacter) \(newState) \(outputCharacter) \(direction)"
+    }
+}
+
+
 enum TokenType: String {
-    case Register = "Register"
-    case LabelDefinition = "Label Definition"
-    case Label = "Label"
-    case ImmediateString = "String"
-    case ImmediateInteger = "Integer"
-    case ImmediateTuple = "Tuple"
-    case Instruction = "Instruction"
-    case Directive = "Directive"
+    case Register = "Register" //
+    case LabelDefinition = "LabelDefinition"//
+    case Label = "Label"//
+    case ImmediateString = "String" //
+    case ImmediateInteger = "Integer" //
+    case ImmediateTuple = "Tuple" //
+    case Instruction = "Instruction"//
+    case Directive = "Directive" 
     case InvalidToken = "Invalid"
     case Empty = "Empty"
 }
