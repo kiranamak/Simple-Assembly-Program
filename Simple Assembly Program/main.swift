@@ -8,10 +8,8 @@
 
 import Foundation
 
-let path = "/Users/kmak/Desktop/doubles.bin.txt"
-let path2 = "/Users/kmak/Desktop/Dbls.txt"
-let path3 = "/Users/kmak/Desktop/Turing.txt"
-let fileContents = readTextFile(path3).1!
+let path = ""
+let fileContents = readTextFile(path).1!
 let binary = splitStringIntoInts(readTextFile(path).1!)
 var m = Memory(binary: binary)
 
