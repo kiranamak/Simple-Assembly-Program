@@ -16,7 +16,11 @@ class outci: Instruction {
         super.init(memory, 1, 44)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 44)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int]
     }
     
@@ -32,7 +36,11 @@ class outcr: Instruction {
         super.init(memory, 1, 45)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 45)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -49,7 +57,11 @@ class outcx: Instruction {
         super.init(memory, 1, 46)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 46)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -66,7 +78,11 @@ class outcb: Instruction {
         super.init(memory, 2, 47)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 47)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -85,7 +101,11 @@ class outs: Instruction {
         super.init(memory, 1, 55)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 55)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     

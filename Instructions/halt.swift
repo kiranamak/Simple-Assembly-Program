@@ -16,6 +16,10 @@ class halt: Instruction {
         super.init(memory, 0, 0)
     }
     
+    init() {
+        super.init(0, 0)
+    }
+    
     override func run(_ args: [Int]) {
         super.run(args)
         VM.setHalt(true)

@@ -16,7 +16,11 @@ class cmpir: Instruction {
         super.init(memory, 2, 33)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 33)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -32,7 +36,11 @@ class cmprr: Instruction {
         super.init(memory, 2, 34)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 34)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -48,7 +56,11 @@ class cmpmr: Instruction {
         super.init(memory, 2, 35)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 35)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     

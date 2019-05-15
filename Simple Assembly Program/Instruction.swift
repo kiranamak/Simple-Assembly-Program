@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum Parameters {
-    case int, register, label
+enum ParameterType: String {
+    case int = "Integer", register = "Register", label = "Label", string = "String", tuple = "Tuple"
 }
 
-class Instruction: CustomStringConvertible {
+class Instruction: AssemblyInstruction {
     let argCount: Int
     let code: Int
     let memory: Memory
@@ -34,7 +34,21 @@ class Instruction: CustomStringConvertible {
         else { self.name = String(describing: thisType) }
     }
     
-    var parameterTypes: [Parameters?] {
+    init (_ argCount: Int, _ code: Int) {
+        self.memory = Memory(binary: [0])
+        self.argCount = argCount
+        self.code = code
+        
+        let thisType = type(of: self)
+        if thisType == Instruction.self { self.name = "Abstract" }
+        else { self.name = String(describing: thisType) }
+    }
+    
+    /*func setMemory(_ memory: Memory) {
+        self.memory = memory
+    }*/
+    
+    var parameterTypes: [ParameterType?] {
         return [nil, nil, nil]
     }
     
@@ -96,6 +110,7 @@ class Instruction: CustomStringConvertible {
         case .label: createLabel(param)
         case .register: createRegister(param)
         case .int: createInt(param)
+        default: print("An incorrect parameter type was reached in Instruction checkParams")
         }
     }
     

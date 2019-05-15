@@ -17,12 +17,13 @@ class VM {
     }
     var memory: Memory
     
-    init(commands: [Instruction], memory: Memory) {
+    init(memory: Memory) {
         self.commands = [Instruction](repeating: Instruction(memory, 0, -1), count: 58)
-        for c in commands {
+        self.memory = memory
+        let constants = Constants(memory: memory)
+        for c in constants.commands {
             self.commands[c.code] = c
         }
-        self.memory = memory
     }
     
     static func setHalt(_ halt: Bool) {

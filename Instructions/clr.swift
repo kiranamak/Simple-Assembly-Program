@@ -16,7 +16,11 @@ class clrr: Instruction {
         super.init(memory, 1, 1)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 1)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -33,7 +37,11 @@ class clrx: Instruction {
         super.init(memory, 1, 2)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 2)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -50,7 +58,11 @@ class clrm: Instruction {
         super.init(memory, 1, 3)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 3)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -67,7 +79,11 @@ class clrb: Instruction {
         super.init(memory, 2, 4)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 4)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

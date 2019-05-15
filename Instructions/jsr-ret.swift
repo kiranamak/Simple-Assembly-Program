@@ -17,7 +17,11 @@ class jsr: Instruction {
         super.init(memory, 1, 39)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 39)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -38,7 +42,11 @@ class ret: Instruction {
         super.init(memory, 0, 40)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(0, 40)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [nil]
     }
     

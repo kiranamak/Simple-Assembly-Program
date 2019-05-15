@@ -16,7 +16,11 @@ class sojz: Instruction {
         super.init(memory, 2, 29)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 29)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .label]
     }
     
@@ -35,7 +39,11 @@ class sojnz: Instruction {
         super.init(memory, 2, 30)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 30)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .label]
     }
     
@@ -54,7 +62,11 @@ class aojz: Instruction {
         super.init(memory, 2, 31)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 31)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .label]
     }
     
@@ -73,7 +85,11 @@ class aojnz: Instruction {
         super.init(memory, 2, 32)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 32)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .label]
     }
     

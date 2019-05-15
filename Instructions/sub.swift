@@ -16,7 +16,11 @@ class subir: Instruction {
         super.init(memory, 2, 16)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 16)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -33,7 +37,11 @@ class subrr: Instruction {
         super.init(memory, 2, 17)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 17)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -49,7 +57,11 @@ class submr: Instruction {
         super.init(memory, 2, 18)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 18)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -65,7 +77,11 @@ class subxr: Instruction {
         super.init(memory, 2, 19)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 19)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

@@ -16,7 +16,11 @@ class mulir: Instruction {
         super.init(memory, 2, 20)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 20)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -33,7 +37,11 @@ class mulrr: Instruction {
         super.init(memory, 2, 21)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 21)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -49,7 +57,11 @@ class mulmr: Instruction {
         super.init(memory, 2, 22)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 22)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -65,7 +77,11 @@ class mulxr: Instruction {
         super.init(memory, 2, 23)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 23)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

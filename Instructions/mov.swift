@@ -16,7 +16,11 @@ class movir: Instruction {
         super.init(memory, 2, 5)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 5)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -33,7 +37,11 @@ class movrr: Instruction {
         super.init(memory, 2, 6)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 6)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -50,7 +58,11 @@ class movrm: Instruction {
         super.init(memory, 2, 7)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 7)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .label]
     }
     
@@ -67,7 +79,11 @@ class movmr: Instruction {
         super.init(memory, 2, 8)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 8)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -83,7 +99,11 @@ class movxr: Instruction {
         super.init(memory, 2, 9)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 9)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -99,7 +119,11 @@ class movar: Instruction {
         super.init(memory, 2, 10)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 10)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -114,7 +138,11 @@ class movb: Instruction {
         super.init(memory, 2, 11)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 11)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -131,7 +159,11 @@ class movrx: Instruction {
         super.init(memory, 2, 53)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 53)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -147,7 +179,11 @@ class movxx: Instruction {
         super.init(memory, 2, 54)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 54)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

@@ -83,3 +83,36 @@ extension String {
         return substring(with: startIndex..<endIndex)
     }
 }
+
+func isDirection(_ dir: String) -> Int? {
+    if dir == "r" || dir == "R" { return 1}
+    if dir == "l" || dir == "L" { return -1}
+    return nil
+}
+
+func makeTuple(_ tuple: [String]) -> Tuple? {
+    if let cs = Int(tuple[0]), Array(tuple[1]).count == 1, let os = Int(tuple[2]), Array(tuple[3]).count == 1, let dir = isDirection(tuple[4]) {
+        return Tuple(cs, characterToUnicode(Character(tuple[1])), os, characterToUnicode(Character(tuple[3])), dir)
+    }
+    return nil
+}
+
+func readTextFile(_ path: String) -> (message: String?, fileText: String?) {
+    let text: String
+    do {
+        text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+    } catch {
+        return ("\(error)", nil)
+    }
+    return (nil, text)
+}
+
+func writeTextFile(_ path: String, data: String) -> String? {
+    let url = NSURL.fileURL(withPath: path)
+    do {
+        try data.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+    } catch let error as NSError {
+        return "Failed writing to URL: \(url), Error: " + error.localizedDescription
+    }
+    return nil
+}

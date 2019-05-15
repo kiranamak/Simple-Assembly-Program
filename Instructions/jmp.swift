@@ -16,7 +16,11 @@ class jmp: Instruction {
         super.init(memory, 1, 28)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 28)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -32,7 +36,11 @@ class jmpn: Instruction {
         super.init(memory, 1, 36)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 36)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -50,7 +58,11 @@ class jmpz: Instruction {
         super.init(memory, 1, 37)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 37)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -68,7 +80,11 @@ class jmpp: Instruction {
         super.init(memory, 1, 38)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 38)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     
@@ -87,7 +103,11 @@ class jmpne: Instruction {
         super.init(memory, 1, 57)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 57)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label]
     }
     

@@ -16,7 +16,11 @@ class printi: Instruction {
         super.init(memory, 1, 49)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 49)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     

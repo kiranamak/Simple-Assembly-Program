@@ -16,7 +16,11 @@ class divir: Instruction {
         super.init(memory, 2, 24)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 24)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -34,7 +38,11 @@ class divrr: Instruction {
         super.init(memory, 2, 25)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 25)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -51,7 +59,11 @@ class divmr: Instruction {
         super.init(memory, 2, 26)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 26)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -68,7 +80,11 @@ class divxr: Instruction {
         super.init(memory, 2, 27)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 27)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

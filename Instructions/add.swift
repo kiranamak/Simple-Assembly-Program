@@ -16,7 +16,11 @@ class addir: Instruction {
         super.init(memory, 2, 12)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 12)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.int, .register]
     }
     
@@ -33,7 +37,11 @@ class addrr: Instruction {
         super.init(memory, 2, 13)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 13)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     
@@ -49,7 +57,11 @@ class addmr: Instruction {
         super.init(memory, 2, 14)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 14)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.label, .register]
     }
     
@@ -65,7 +77,11 @@ class addxr: Instruction {
         super.init(memory, 2, 15)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 15)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

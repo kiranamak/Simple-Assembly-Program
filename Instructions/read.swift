@@ -14,7 +14,11 @@ class readi: Instruction {
         super.init(memory, 2, 48)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(2, 48)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register, .register]
     }
     

@@ -16,7 +16,11 @@ class nop: Instruction {
         super.init(memory, 0, 56)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(0, 56)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [nil]
     }
     

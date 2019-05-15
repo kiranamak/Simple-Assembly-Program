@@ -16,7 +16,11 @@ class push: Instruction {
         super.init(memory, 1, 41)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 41)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -37,7 +41,11 @@ class pop: Instruction {
         super.init(memory, 1, 42)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 42)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     
@@ -58,7 +66,11 @@ class stackc: Instruction {
         super.init(memory, 1, 43)
     }
     
-    override var parameterTypes: [Parameters?] {
+    init() {
+        super.init(1, 43)
+    }
+    
+    override var parameterTypes: [ParameterType?] {
         return [.register]
     }
     

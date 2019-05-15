@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EB09566228B7A1F009B4094 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB09565228B7A1F009B4094 /* constants.swift */; };
+		8EB127A9227E539700FBBD0E /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127A8227E539700FBBD0E /* Assembler.swift */; };
+		8EB127AB22805A9100FBBD0E /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127AA22805A9100FBBD0E /* Directive.swift */; };
+		8EB127AD2282453B00FBBD0E /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127AC2282453B00FBBD0E /* Token.swift */; };
+		8EB127AF228351C100FBBD0E /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127AE228351C100FBBD0E /* Tuple.swift */; };
+		8EB127B12283556B00FBBD0E /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127B02283556B00FBBD0E /* UI.swift */; };
 		8ED0D79422711C7200A7C0AD /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED0D79322711C7200A7C0AD /* Tokenizer.swift */; };
 		8ED3538D224AF23000C833E1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED3538C224AF23000C833E1 /* main.swift */; };
 		8ED35398224AFA2B00C833E1 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED35397224AFA2B00C833E1 /* VM.swift */; };
@@ -45,6 +51,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8EB09565228B7A1F009B4094 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		8EB127A8227E539700FBBD0E /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		8EB127AA22805A9100FBBD0E /* Directive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
+		8EB127AC2282453B00FBBD0E /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		8EB127AE228351C100FBBD0E /* Tuple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		8EB127B02283556B00FBBD0E /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		8ED0D79322711C7200A7C0AD /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		8ED35389224AF23000C833E1 /* Simple Assembly Program */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Simple Assembly Program"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED3538C224AF23000C833E1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -104,10 +116,16 @@
 			children = (
 				8ED3538C224AF23000C833E1 /* main.swift */,
 				8ED0D79322711C7200A7C0AD /* Tokenizer.swift */,
+				8EB127AC2282453B00FBBD0E /* Token.swift */,
+				8EB127B02283556B00FBBD0E /* UI.swift */,
+				8EB127AE228351C100FBBD0E /* Tuple.swift */,
+				8EB127A8227E539700FBBD0E /* Assembler.swift */,
 				8ED35397224AFA2B00C833E1 /* VM.swift */,
 				8ED3539D224D12EC00C833E1 /* Instruction.swift */,
+				8EB127AA22805A9100FBBD0E /* Directive.swift */,
 				8ED3539B224B01BD00C833E1 /* Memory.swift */,
 				8ED353C322544CD100C833E1 /* Stack.swift */,
+				8EB09565228B7A1F009B4094 /* constants.swift */,
 				8ED353A7224D706700C833E1 /* util.swift */,
 			);
 			path = "Simple Assembly Program";
@@ -194,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED353C622544DB700C833E1 /* stack.swift in Sources */,
+				8EB127B12283556B00FBBD0E /* UI.swift in Sources */,
 				8ED353A8224D706700C833E1 /* util.swift in Sources */,
 				8ED35398224AFA2B00C833E1 /* VM.swift in Sources */,
 				8ED353C82254536F00C833E1 /* jsr-ret.swift in Sources */,
@@ -204,14 +223,19 @@
 				8ED3539E224D12EC00C833E1 /* Instruction.swift in Sources */,
 				8ED3539C224B01BD00C833E1 /* Memory.swift in Sources */,
 				8ED353B82252FD8400C833E1 /* clr.swift in Sources */,
+				8EB127AD2282453B00FBBD0E /* Token.swift in Sources */,
 				8ED353A6224D700B00C833E1 /* out.swift in Sources */,
 				8ED353C222544B1600C833E1 /* nop.swift in Sources */,
 				8ED353B2224D735C00C833E1 /* jmp.swift in Sources */,
 				8ED353C0225420BD00C833E1 /* soj-aoj.swift in Sources */,
 				8ED353B4224D7A5100C833E1 /* halt.swift in Sources */,
+				8EB127A9227E539700FBBD0E /* Assembler.swift in Sources */,
 				8ED353B0224D730300C833E1 /* add.swift in Sources */,
+				8EB127AF228351C100FBBD0E /* Tuple.swift in Sources */,
 				8ED353AC224D71A000C833E1 /* print.swift in Sources */,
+				8EB09566228B7A1F009B4094 /* constants.swift in Sources */,
 				8ED353B622500AB500C833E1 /* mov.swift in Sources */,
+				8EB127AB22805A9100FBBD0E /* Directive.swift in Sources */,
 				8ED353BA22541ADB00C833E1 /* sub.swift in Sources */,
 				8ED353C422544CD100C833E1 /* Stack.swift in Sources */,
 				8ED3538D224AF23000C833E1 /* main.swift in Sources */,

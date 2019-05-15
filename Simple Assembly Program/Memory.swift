@@ -26,6 +26,7 @@ class Memory {
     
     init(binary: [Int]) {
         self.memory = binary
+        //print(binary.count)
         for i in 2..<(binary[0] + 2) {
             program.append(binary[i])
         }
@@ -50,7 +51,7 @@ class Memory {
     }
     
     func getProgramStart() -> Int {
-        return memory[1]
+        return memory.count >= 2 ? memory[1] : 0
     }
     
     subscript(_ r: Register) -> Int {
