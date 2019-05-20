@@ -61,26 +61,18 @@ class Tokenizer {
             if chars[i] == ";" { return result }
             // creates string
             if chars[i] == "\"" {
-                chunk += "\""
-                i += 1
-                while chars[i] != "\"" && chars[i] != "\n" && chars[i] != ";" {
-                    chunk += String(chars[i])
-                    i += 1
-                }
-                i += 1
+                let result = handleGroup(chars: chars, index: i, isString: true)
+                chunk += result.0
+                i = result.1
             }
                 // creates tuple
             else if chars[i] == "\\" {
-                chunk += "\\"
-                i += 1
-                while chars[i] != "\\" && chars[i] != "\n" && chars[i] != ";" {
-                    chunk += String(chars[i])
-                    i += 1
-                }
-                i += 1
+                let result = handleGroup(chars: chars, index: i, isTuple: true)
+                chunk += result.0
+                i = result.1
             }
             else if chars[i] == " " || chars[i] == "\t" { i += 1 }
-            else {
+            else { //lowercase everything else
                 while i < chars.count && chars[i] != " " {
                     chunk += String(chars[i]).lowercased()
                     i += 1
@@ -90,6 +82,19 @@ class Tokenizer {
             chunk = ""
         }
         return result
+    }
+    
+    private func handleGroup(chars: [Character], index: Int, isString: Bool = false, isTuple: Bool = false) -> (String, Int) {
+        var escapeKey: Character = "\""
+        if isTuple { escapeKey = "\\" }
+        var chunk = String(escapeKey)
+        var i = index + 1
+        while chars[i] != escapeKey && chars[i] != "\n" && chars[i] != ";" {
+            chunk += String(chars[i])
+            i += 1
+        }
+        i += 1
+        return (chunk, i)
     }
     
     private func isLabelDefinition(_ chunk: String) -> Bool {

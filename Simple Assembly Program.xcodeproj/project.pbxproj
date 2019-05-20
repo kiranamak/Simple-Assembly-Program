@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8EB09566228B7A1F009B4094 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB09565228B7A1F009B4094 /* constants.swift */; };
+		8EB0957B228C90B5009B4094 /* Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0957A228C90B5009B4094 /* Debugger.swift */; };
+		8EB0957D228C9502009B4094 /* brk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0957C228C9502009B4094 /* brk.swift */; };
+		8EB0957F228CE0CB009B4094 /* Deassembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB0957E228CE0CB009B4094 /* Deassembler.swift */; };
 		8EB127A9227E539700FBBD0E /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127A8227E539700FBBD0E /* Assembler.swift */; };
 		8EB127AB22805A9100FBBD0E /* Directive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127AA22805A9100FBBD0E /* Directive.swift */; };
 		8EB127AD2282453B00FBBD0E /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB127AC2282453B00FBBD0E /* Token.swift */; };
@@ -52,6 +55,9 @@
 
 /* Begin PBXFileReference section */
 		8EB09565228B7A1F009B4094 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		8EB0957A228C90B5009B4094 /* Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debugger.swift; sourceTree = "<group>"; };
+		8EB0957C228C9502009B4094 /* brk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brk.swift; sourceTree = "<group>"; };
+		8EB0957E228CE0CB009B4094 /* Deassembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deassembler.swift; sourceTree = "<group>"; };
 		8EB127A8227E539700FBBD0E /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		8EB127AA22805A9100FBBD0E /* Directive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Directive.swift; sourceTree = "<group>"; };
 		8EB127AC2282453B00FBBD0E /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 				8EB127AE228351C100FBBD0E /* Tuple.swift */,
 				8EB127A8227E539700FBBD0E /* Assembler.swift */,
 				8ED35397224AFA2B00C833E1 /* VM.swift */,
+				8EB0957A228C90B5009B4094 /* Debugger.swift */,
+				8EB0957E228CE0CB009B4094 /* Deassembler.swift */,
 				8ED3539D224D12EC00C833E1 /* Instruction.swift */,
 				8EB127AA22805A9100FBBD0E /* Directive.swift */,
 				8ED3539B224B01BD00C833E1 /* Memory.swift */,
@@ -149,6 +157,7 @@
 				8ED353A5224D700B00C833E1 /* out.swift */,
 				8ED353AB224D71A000C833E1 /* print.swift */,
 				8ED353C9225570AD00C833E1 /* read.swift */,
+				8EB0957C228C9502009B4094 /* brk.swift */,
 				8ED353C122544B1600C833E1 /* nop.swift */,
 			);
 			path = Instructions;
@@ -229,6 +238,9 @@
 				8ED353B2224D735C00C833E1 /* jmp.swift in Sources */,
 				8ED353C0225420BD00C833E1 /* soj-aoj.swift in Sources */,
 				8ED353B4224D7A5100C833E1 /* halt.swift in Sources */,
+				8EB0957B228C90B5009B4094 /* Debugger.swift in Sources */,
+				8EB0957F228CE0CB009B4094 /* Deassembler.swift in Sources */,
+				8EB0957D228C9502009B4094 /* brk.swift in Sources */,
 				8EB127A9227E539700FBBD0E /* Assembler.swift in Sources */,
 				8ED353B0224D730300C833E1 /* add.swift in Sources */,
 				8EB127AF228351C100FBBD0E /* Tuple.swift in Sources */,

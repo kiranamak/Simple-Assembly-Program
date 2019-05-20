@@ -16,13 +16,28 @@ class VM {
         return memory[Register.rPC]
     }
     var memory: Memory
+    var debugger: Debugger? = nil
+    var breakPointsEnabled = true
+    let filePath: String
+    var breakPoints = Set<Int>()
     
-    init(memory: Memory) {
+    init(memory: Memory, filePath: String) {
+        self.filePath = filePath
         self.commands = [Instruction](repeating: Instruction(memory, 0, -1), count: 58)
         self.memory = memory
         let constants = Constants(memory: memory)
         for c in constants.commands {
-            self.commands[c.code] = c
+            commands[c.code] = c
+        }
+        setBreakPoints()
+        debugger = Debugger(filePath: filePath, vm: self)
+        
+    }
+    
+    private func setBreakPoints() {
+        breakPoints.insert(memory.getProgramStart())
+        for i in 0..<memory.program.count {
+            if memory[i] == 52 { breakPoints.insert(i)}
         }
     }
     
@@ -37,19 +52,41 @@ class VM {
         return true
     }
     
+    func enableBreakPoints() { breakPointsEnabled = true }
+    
+    func disableBreakPoints() { breakPointsEnabled = false }
+    
     func run(){
+        if breakPointsEnabled {
+            debugger!.enterDebugger()
+        }
+        execute()
+    }
+    
+    func execute() {
         while !VM.halt {
-            if !validCommand(memory[pointer]) {
-                print("Invalid command code \(memory[pointer]) at location \(pointer)")
-            }
-            let command = commands[memory[pointer]]
+            step()
+        }
+    }
+    
+    func step(){
+        if !validCommand(memory[pointer]) {
+            print("Invalid command code \(memory[pointer]) at location \(pointer)")
+        }
+        
+        let command = commands[memory[pointer]]
+        
+        memory[.rPC] += 1
+        
+        var args = ""
+        for _ in 0..<command.argCount {
+            args += String(memory[pointer]) + " "
             memory[.rPC] += 1
-            var args = ""
-            for _ in 0..<command.argCount {
-                args += String(memory[pointer]) + " "
-                memory[.rPC] += 1
-            }
-            command.run(args)
+        }
+        command.run(args)
+        
+        if breakPointsEnabled && breakPoints.contains(memory[.rPC]) {
+            debugger!.enterDebugger()
         }
     }
 }

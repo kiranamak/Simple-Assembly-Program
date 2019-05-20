@@ -107,12 +107,11 @@ func readTextFile(_ path: String) -> (message: String?, fileText: String?) {
     return (nil, text)
 }
 
-func writeTextFile(_ path: String, data: String) -> String? {
+func writeTextFile(_ path: String, data: String) {
     let url = NSURL.fileURL(withPath: path)
     do {
         try data.write(to: url, atomically: true, encoding: String.Encoding.utf8)
     } catch let error as NSError {
-        return "Failed writing to URL: \(url), Error: " + error.localizedDescription
+        print("Failed writing to URL: \(url), Error: " + error.localizedDescription)
     }
-    return nil
 }

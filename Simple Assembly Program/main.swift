@@ -8,31 +8,25 @@
 
 import Foundation
 
-let path = ""
-let fileContents = readTextFile(path).1!
-let binary = splitStringIntoInts(readTextFile(path).1!)
-var m = Memory(binary: binary)
+//let a = VM(memory: m, filePath: path2)
+//a.run()
+//let b = Tokenizer(fileText: fileContents)
+//b.createChunks()
+//b.createTokens()
+//for i in 0..<b.lines.count {
+//    print("\(b.lines[i]) \(b.chunks[i])", terminator: " ")
+//    for t in b.tokens[i] {
+//        print(t.type.rawValue, terminator: " ")
+//    }
+//    print("\n")
+//}
+//let c = Assembler(fileContents)
+//print(c.run())
+//print(c.symbols)
+//print(c.lst)
 
-
-print("hello world")
-/*let a = VM(memory: m)
-a.run()
-let b = Tokenizer(fileText: fileContents)
-b.createChunks()
-b.createTokens()
-for i in 0..<b.lines.count {
-    print("\(b.lines[i]) \(b.chunks[i])", terminator: " ")
-    for t in b.tokens[i] {
-        print(t.type.rawValue, terminator: " ")
-    }
-    print("\n")
-}*/
-/*let b = Assembler(fileContents)
-print(b.run())
-print(b.symbols)
-print(b.lst)
-*/
 
 let x = UI()
 x.run()
+
 

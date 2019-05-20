@@ -130,40 +130,51 @@ class Assembler {
                 switch p {
                 case .register: binary[pointer] = tLine[i].int!
                     pointer += 1
-                case .int:
-                    if c.name == ".allocate" {
-                        pointer += tLine[i].int!
-                        return
-                    }
-                    binary[pointer] = tLine[i].int!
-                    pointer += 1
-                case .label:
-        // sets label to start
-                    if c.name == ".start" {
-                        start = tLine[i].string!
-                        return
-                    }
-                    binary[pointer] = (symbols[tLine[i].string!] != nil ? symbols[tLine[i].string!]! : -1)
-                    pointer += 1
-                case .string: binary[pointer] = tLine[i].string!.count
-                    pointer += 1
-                    for c in tLine[i].string! {
-                        binary[pointer] = characterToUnicode(c)
-                        pointer += 1
-                    }
-                case .tuple:
-                    for e in tLine[i].tuple!.iterableTuple {
-                        binary[pointer] = e
-                        pointer += 1
-                    }
-                default: print("An incorrect parameter type was reached in Assembler checkParams")
+                case .int: handleInt(token: tLine[i], asmInst: c)
+                case .label: handleLabel(token: tLine[i], asmInst: c)
+                case .string: handleString(tLine[i])
+                case .tuple: handleTuple(tLine[i])
                 }
             }
         }
         }
     }
     
-    func defineLabel(_ label: String, secondPass: Bool = false) {
+    private func handleString(_ token: Token) {
+        binary[pointer] = token.string!.count
+        pointer += 1
+        for c in token.string! {
+            binary[pointer] = characterToUnicode(c)
+            pointer += 1
+        }
+    }
+    
+    private func handleTuple(_ token: Token) {
+        for e in token.tuple!.iterableTuple {
+            binary[pointer] = e
+            pointer += 1
+        }
+    }
+    
+    private func handleLabel(token: Token, asmInst c: AssemblyInstruction) {
+        if c.name == ".start" {
+            start = token.string!
+            return
+        }
+        binary[pointer] = (symbols[token.string!] != nil ? symbols[token.string!]! : -1)
+        pointer += 1
+    }
+    
+    private func handleInt(token: Token, asmInst c: AssemblyInstruction) {
+        if c.name == ".allocate" {
+            pointer += token.int!
+            return
+        }
+        binary[pointer] = token.int!
+        pointer += 1
+    }
+    
+    private func defineLabel(_ label: String) {
         symbols[label] = pointer
     }
 }

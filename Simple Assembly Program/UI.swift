@@ -31,6 +31,7 @@ class UI {
         print(getHelpMessage())
         print("Enter option...", terminator: "")
         var input = splitStringIntoParts(readLine()!)
+        if input.count == 0 { input.append("empty") }
         while input[0] != "quit" {
             switch input[0] {
             case "asm": asm(input)
@@ -50,7 +51,7 @@ class UI {
     func asm(_ line: [String]) {
         if line.count != 2 { print("Error: incorrect parameters for asm") }
         let filePath = path + line[1]
-        print("Assembly file: \(filePath)")
+        print("Assembling file: \(filePath)")
         let fileText = readTextFile(filePath + ".txt")
         if let e = fileText.0 { print(e); return }
         let assembler = Assembler(fileText.1!)
@@ -68,11 +69,13 @@ class UI {
     
     func run(_ line: [String]) {
         if line.count != 2 { print("Error: incorrect parameters for asm") }
-        let e = readTextFile(path + line[1] + ".bin")
+        let filePath = path + line[1]
+        print("Running file: \(filePath)")
+        let e = readTextFile(filePath + ".bin")
         if e.0 != nil { print(e.0!); return }
         else {
             let binary = splitStringIntoInts(e.1!)
-            let vm = VM(memory: Memory(binary: binary))
+            let vm = VM(memory: Memory(binary: binary), filePath: filePath)
             vm.run()
         }
     }
