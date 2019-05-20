@@ -9,7 +9,6 @@
 import Foundation
 
 //Instructions: 39-40
-//TODO: check stack condition
 
 class jsr: Instruction {
     

@@ -37,7 +37,7 @@ class Debugger{
         print("Sdb (\(vm.pointer), \(vm.memory[vm.pointer]))> ", terminator: "")
         var input = splitStringIntoParts(readLine()!)
         if input.count == 0 { input.append("empty") }
-        while input[0] != "exit"{
+        while !VM.halt {
             let params = (input.count > 1 ? Array(input[1...]) : [String]())
             switch input[0] {
             case "setbk": setbk(params)
@@ -55,7 +55,8 @@ class Debugger{
             case "pst": pst(params)
             case "g": g(params)
             case "s": s(params)
-            case "help": helpMessage()
+            case "exit": VM.setHalt(true)
+            case "help": print(helpMessage())
             default: print("Invalid command, type help for a list of commands")
             }
             if !VM.halt {
@@ -111,7 +112,7 @@ class Debugger{
                 print("r\(reg):\t\(vm.memory[Register(rawValue: reg)!])")
             }
             if reg == 11 {
-                print(".rPC:\t\(vm.memory[Register(rawValue: reg)!])")
+                print("rPC:\t\(vm.memory[Register(rawValue: reg)!])")
             }
         }
     }
@@ -171,9 +172,27 @@ class Debugger{
         vm.step()
     }
     
-    private func helpMessage() {
-        print("help table needs to be typed")
-    }
+    private func helpMessage() -> String{
+        return """
+        Debugger Help:
+        setbk <address> - set breakpoint at <address>
+        rmbk <address> - remove breakpoint at <address>
+        clrbk - clear all breakpoints
+        disbk - temporarily disable all breakpoints
+        enbk - enable breakpoints
+        pbk - print breakpoint table
+        preg - print the registers
+        wreg <number> <value> - write the value of register <number> to <value>
+        wpc <value> - change value of PC to <value>
+        pmem <start address> <end address> - print memory locations
+        deas <start address> <end address> - deassemble memory locations
+        wmem <address> <value> - change value of memory at <address> to <value>
+        pst  - print symbol table
+        g  - continue program execution
+        s - single step
+        exit - terminate virtual machine
+        help - print this help table
+        """    }
     
     private func parseInt(_ int: String) -> Int? {
         if let i = Int(int) { return i }
@@ -190,7 +209,9 @@ class Debugger{
     }
     
     private func parseAddress(_ a: String) -> Int? {
-        if let i = Int(a) { return i }
+        if let i = Int(a) {
+            if  i >= 0 && i < vm.memory.getProgramLength() { return i }
+        }
         if let i = st[a] { return i }
         print("Invalid address \(a)")
         return nil
