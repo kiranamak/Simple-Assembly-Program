@@ -8,6 +8,8 @@
 
 import Foundation
 
+//Instructions: 48, 50-51
+
 class readi: Instruction {
     
     init(_ memory: Memory) {
